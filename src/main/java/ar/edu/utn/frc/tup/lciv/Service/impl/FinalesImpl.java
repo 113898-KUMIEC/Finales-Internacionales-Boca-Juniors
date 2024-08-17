@@ -27,10 +27,20 @@ public class FinalesImpl implements FinalesService {
     @Autowired
     public List<Formaciones> getAllFormaciones() {
         ResponseEntity<List<Formaciones>> responseEntity = restClient.getAllFormaciones();
-        if (responseEntity.getStatusCode().is2xxSuccessful()) {
-            return responseEntity.getBody();
+        ResponseEntity<List<Formaciones>> responseEntityV2 = restClient.getAllFormacionesV2();
+
+        if (responseEntityV2.getStatusCode().is2xxSuccessful() && responseEntityV2.getBody() != null) {
+            if (responseEntity.getStatusCode().is2xxSuccessful() && responseEntity.getBody() != null) {
+                for (Formaciones f : responseEntity.getBody()) {
+                    responseEntityV2.getBody().add(f);
+                }
+                return responseEntityV2.getBody();
+            } else {
+                System.err.println("Error en la respuesta HTTP o el cuerpo es nulo: " + responseEntity.getStatusCode());
+                return new ArrayList<>();
+            }
         } else {
-            System.err.println("Error en la respuesta HTTP: " + responseEntity.getStatusCode());
+            System.err.println("Error en la respuesta HTTP o el cuerpo es nulo: " + responseEntityV2.getStatusCode());
             return new ArrayList<>();
         }
     }
