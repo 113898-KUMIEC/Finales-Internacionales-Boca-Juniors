@@ -48,8 +48,8 @@ Este proyecto es una API REST desarrollada en **Java** utilizando **Spring Boot*
 
 ## Uso
 
-La API permite consultar información sobre las finales internacionales de Boca Juniors, incluyendo los equipos, formaciones, y resultados. Ejemplo de un endpoint que consume una API externa y devuelve datos procesados:
+Para ver el uso completo ingresar a:
 
 ```bash
-GET /finales/PartidosCompletos
+http://localhost:8080/swagger-ui/index.htm
 ```
