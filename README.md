@@ -51,5 +51,5 @@ Este proyecto es una API REST desarrollada en **Java** utilizando **Spring Boot*
 Para ver el uso completo ingresar a:
 
 ```bash
-http://localhost:8080/swagger-ui/index.htm
+http://localhost:8080/swagger-ui/index.html
 ```
